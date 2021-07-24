@@ -7,7 +7,8 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "lint": "ts-standard"
   },
   "dependencies": {
     "@nuxtjs/axios": "5.13.6",
@@ -20,6 +21,13 @@
     "@commitlint/config-conventional": "12.1.4",
     "@nuxt/types": "2.15.7",
     "@nuxt/typescript-build": "2.1.0",
-    "husky": "6.0.0"
+    "husky": "6.0.0",
+    "ts-standard": "^10.0.0"
+  },
+  "eslintConfig": {
+    "extends": ["./node_modules/ts-standard/eslintrc.json"],
+    "parserOptions": {
+      "project": "./tsconfig.json"
+    }
   }
 }
