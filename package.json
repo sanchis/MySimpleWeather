@@ -4,7 +4,9 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "prepare": "husky install",
+    "lint": "ts-standard"
   },
   "dependencies": {
     "react": "17.0.0",
@@ -25,8 +27,15 @@
     "extends": [
       "./node_modules/ts-standard/eslintrc.json"
     ],
+    "ignorePatterns": "*.d.ts",
     "parserOptions": {
       "project": "./tsconfig.json"
     }
+  },
+  "ts-standard": {
+    "ignore": [
+      "*.d.ts",
+      "vite.config.ts"
+    ]
   }
 }
