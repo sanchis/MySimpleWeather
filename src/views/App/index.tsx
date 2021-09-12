@@ -1,17 +1,17 @@
 import React, { ReactElement } from 'react'
-import Input from 'components/ui/input'
-import video from 'assets/video.webm'
-import styles from './App.module.css'
+import Detail from 'views/detail'
+import Index from 'views/index'
+import { Route, Switch } from 'wouter'
 
 export default function App (): ReactElement {
   return (
     <>
-      <div className={styles.indexContainer}>
-        <Input placeholder='Localidad' />
-        <video autoPlay className={styles.video} loop>
-          <source src={video} />
-        </video>
-      </div>
+      <Switch>
+        <Route path='/' component={Index} />
+        <Route path='/t/:id'>
+          {(params) => <Detail id={params.id} />}
+        </Route>
+      </Switch>
     </>
   )
 }
