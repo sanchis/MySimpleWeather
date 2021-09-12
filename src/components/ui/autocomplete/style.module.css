@@ -1,0 +1,26 @@
+.autoCompleteBox {
+    background-color: white;
+    padding: 0;
+    margin: 0;
+    color: #363636;
+}
+
+.autocompleteWrapper {}
+
+.item {
+
+    list-style: none;
+}
+
+
+.itemLink {
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    color: #363636;
+    padding: 5px;
+}
+
+.itemLink:hover, .itemLink:focus {
+    background-color: wheat;
+}
