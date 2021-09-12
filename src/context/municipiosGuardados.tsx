@@ -12,11 +12,8 @@ export const MunicipiosGuardadosContext = React.createContext<MunicipiosGuardado
   guardarMunicipios: (val: MunicipiosEndpointResponse[]) => null
 })
 
-const currentMunicipiosGuardados = await localforage.getItem<MunicipiosEndpointResponse[]>('municipiosGuardados')
-
 export function MunicipiosGuardadosContextProvider ({ children }: any): React.ReactElement {
-  const [municipiosGuardados, guardarMunicipios] = useState<MunicipiosEndpointResponse[]>(
-    currentMunicipiosGuardados ?? [])
+  const [municipiosGuardados, guardarMunicipios] = useState<MunicipiosEndpointResponse[]>([])
 
   useEffect(() => {
     localforage.setItem('municipiosGuardados', municipiosGuardados)

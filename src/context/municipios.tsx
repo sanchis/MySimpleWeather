@@ -13,11 +13,8 @@ export const MunicipiosContext = React.createContext<MunicipiosContextModel>({
   setMunicipios: (val: MunicipiosEndpointResponse[]) => null
 })
 
-const currentMunicipios = await localforage.getItem<MunicipiosEndpointResponse[]>('municipios')
-
 export function MunicipiosContextProvider ({ children }: any): React.ReactElement {
-  const [municipios, setMunicipios] = useState<MunicipiosEndpointResponse[]>(
-    currentMunicipios ?? [])
+  const [municipios, setMunicipios] = useState<MunicipiosEndpointResponse[]>([])
 
   useEffect(() => {
     // Check if the current municipios is in the navigator storage
