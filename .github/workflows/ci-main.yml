@@ -41,10 +41,11 @@ jobs:
 
       - name: Build 🚧
         run: npm run build
+        env: 
+          VITE_ApiBaseUrl: https://www.el-tiempo.net/api/json/v2/
 
       - name: Deploy 🚀
-        uses: peaceiris/actions-gh-pages@v3
+        uses: JamesIves/github-pages-deploy-action@4.1.5
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-
+          branch: gh-pages # The branch the action should deploy to.
+          folder: dist # The folder the action should deploy.
