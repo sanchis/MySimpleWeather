@@ -42,7 +42,7 @@ jobs:
       - name: Build 🚧
         run: npm run build
         env: 
-          VITE_ApiBaseUrl: https://www.el-tiempo.net/api/json/v2/
+          VITE_ApiBaseUrl: https://opendata.aemet.es/opendata/api/
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.5
