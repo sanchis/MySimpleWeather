@@ -1,10 +1,6 @@
-name: ci
+name: ci-on-pull
 
 on:
-  push:
-    branches:
-      - main
-      - master
   pull_request:
     branches:
       - main
