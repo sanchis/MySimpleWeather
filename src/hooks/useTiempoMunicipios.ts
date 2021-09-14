@@ -4,17 +4,17 @@ import { Tiempo } from 'services/tiempo.model'
 import { useMunicipios } from './useMunicipios'
 
 interface HookModel{
-  tiempo: Tiempo
+  tiempo: Tiempo | undefined
   loading: boolean
 }
 
 export function useTiempoMunicipio (id: string): HookModel {
-  const { findMunicipio } = useMunicipios()
-  const currentMunicipio = findMunicipio(id)
-  const [loading, setLoading] = useState<boolean>(false) // TODO
-  const [tiempo, setTiempo] = useState<any>(null) // TODO
+  const { municipios, findMunicipio } = useMunicipios()
+  const [loading, setLoading] = useState<boolean>(false)
+  const [tiempo, setTiempo] = useState<Tiempo>()
 
   useEffect(() => {
+    const currentMunicipio = findMunicipio(id)
     if (currentMunicipio === undefined) {
       return
     }
@@ -23,7 +23,7 @@ export function useTiempoMunicipio (id: string): HookModel {
     getTiempoMunicipio(currentMunicipio.CODPROV, currentMunicipio.CODIGOINE)
       .then(data => setTiempo(data))
       .finally(() => setLoading(false))
-  }, [id])
+  }, [id, municipios])
 
   return {
     tiempo,
