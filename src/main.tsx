@@ -7,7 +7,7 @@ import './styles/index.css'
 import App from './views/App'
 
 axios.defaults.baseURL = import.meta.env.VITE_ApiBaseUrl
-// axios.defaults.headers.api_key = import.meta.env.VITE_ApiKey
+axios.defaults.headers.api_key = import.meta.env.VITE_ApiKey
 
 ReactDOM.render(
   <React.StrictMode>

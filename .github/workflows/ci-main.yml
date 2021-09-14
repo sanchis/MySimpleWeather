@@ -43,6 +43,7 @@ jobs:
         run: npm run build
         env: 
           VITE_ApiBaseUrl: https://opendata.aemet.es/opendata/api/
+          VITE_ApiKey: ${{ secrets.VITE_ApiKey }}
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.5
