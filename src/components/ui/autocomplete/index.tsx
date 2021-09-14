@@ -13,6 +13,7 @@ interface Props extends React.InputHTMLAttributes<HTMLInputElement>{
   items: AutocompleteItem[]
   onClickItem: (item: AutocompleteItem) => void
   limit?: number
+  input?: React.InputHTMLAttributes<HTMLInputElement>
 }
 
 export default function Autocomplete (props: Props): React.ReactElement<Props, any> {
@@ -21,16 +22,33 @@ export default function Autocomplete (props: Props): React.ReactElement<Props, a
   const [focus, setFocus] = useState<HTMLAnchorElement |null>(null)
   const itemsRefs = useRef<HTMLAnchorElement[]>([])
 
+  const wrapperRef = useRef<HTMLDivElement| null >(null)
+
+  useEffect(() => {
+    document.addEventListener('click', handleClickOutside, false)
+    return () => {
+      document.removeEventListener('click', handleClickOutside, false)
+    }
+  }, [])
+
+  /** Detect click outside to remove suggestions */
+  const handleClickOutside = (event: MouseEvent): void => {
+    if (wrapperRef?.current !== null && !wrapperRef.current.contains(event.target as Node)) {
+      setItems([])
+    }
+  }
+
+  /** Debounce on search event */
   const debounceCallback = useCallback(
     debounce((val: string) => setSearch(val), 500)
     , [setSearch])
 
+  /** Handle arrow donw and up */
   const handleKeyUpAndDown = (event: React.KeyboardEvent): void => {
     if (event.key !== 'ArrowDown' && event.key !== 'ArrowUp') {
       return
     }
 
-    console.log(event)
     const currentFocus = focus === null ? 0 : itemsRefs.current.indexOf(focus)
     let currentElement: HTMLAnchorElement
     if (event.key === 'ArrowDown') {
@@ -45,6 +63,7 @@ export default function Autocomplete (props: Props): React.ReactElement<Props, a
     currentElement.focus()
   }
 
+  /** Filter the elements on search */
   useEffect(() =>
     setItems(
       props.items
@@ -55,8 +74,9 @@ export default function Autocomplete (props: Props): React.ReactElement<Props, a
 
   return (
     <>
-      <div className={styles.autocompleteWrapper}>
+      <div className={styles.autocompleteWrapper} ref={wrapperRef}>
         <Input
+          {... props.input}
           onFocus={() => setFocus(null)}
           onChange={(event) => debounceCallback(event.target.value)}
           onKeyDown={(event) => handleKeyUpAndDown(event)}
@@ -68,7 +88,7 @@ export default function Autocomplete (props: Props): React.ReactElement<Props, a
                 onClick={(ev) => {
                   ev.preventDefault()
                   props.onClickItem(item)
-                  setFocus(ev.currentTarget)
+                  setItems([])
                 }}
                 onKeyDown={(event) =>
                   handleKeyUpAndDown(event)} ref={el => el !== null ? itemsRefs.current.push(el) : null}

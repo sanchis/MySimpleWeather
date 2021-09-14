@@ -1,29 +1,23 @@
 import React, { ReactElement } from 'react'
 import video from 'assets/video.webm'
 import styles from './index.module.css'
-import { useMunicipios } from 'hooks/useMunicipios'
-import Autocomplete, { AutocompleteItem } from 'components/ui/autocomplete'
-import { useLocation } from 'wouter'
+import SearchBar from 'components/searchBar'
 import { useMunicipiosGuardados } from 'hooks/useMunicipiosGuardados'
+import Municipio from 'components/municipio'
 
 export default function Index (): ReactElement {
-  const { municipios } = useMunicipios()
-  const [, setLocation] = useLocation()
-  const { guardarMunicipios } = useMunicipiosGuardados()
-  const handleClickMunicipio = (item: AutocompleteItem): void => {
-    guardarMunicipios([item.value])
-    setLocation(`/t/${item.id}`)
-  }
-
+  const { municipiosGuardados } = useMunicipiosGuardados()
   return (
     <>
       <div className={styles.indexContainer}>
-        <Autocomplete
-          limit={10}
-          placeholder='Localidad'
-          items={municipios.map((municipio) => ({ id: municipio.CODIGOINE, label: municipio.NOMBRE, value: municipio }))}
-          onClickItem={handleClickMunicipio}
-        />
+        <SearchBar />
+        <div className={styles.containerMunicipios}>
+          {municipiosGuardados.map(municipio =>
+            <Municipio municipio={municipio} key={municipio.CODIGOINE} />
+          )}
+        </div>
+      </div>
+      <div className={styles.videoContainer}>
         <video autoPlay className={styles.video} loop>
           <source src={video} />
         </video>

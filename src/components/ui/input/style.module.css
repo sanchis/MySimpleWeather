@@ -1,3 +1,8 @@
 .input {
     width: 100%;
+    border: 1px solid grey;
+    border-radius: var(--b-radius);
+    padding: 5px;
+    box-sizing: border-box;
+    font-size: inherit;
 }
