@@ -9,11 +9,11 @@ interface Props{
 }
 
 export default function Municipio ({ municipio }: Props): ReactElement {
-  const { loading, tiempo } = useTiempoMunicipio(municipio.CODIGOINE)
+  const { loading, tiempo } = useTiempoMunicipio(municipio.id)
   return (
     <>
-      <div className={styles.municipio} key={municipio.CODIGOINE}>
-        <span className={styles.municipioNombre}>{municipio.NOMBRE}</span>
+      <div className={styles.municipio}>
+        <span className={styles.municipioNombre}>{municipio.nombre}</span>
         <Loading show={loading}>
           <h1 className={styles.municipioTemperatura}> {tiempo?.temperatura_actual}º</h1>
           <span className={styles.subTitle}>Max: {tiempo?.temperaturas.max}º Min: {tiempo?.temperaturas.min}</span>

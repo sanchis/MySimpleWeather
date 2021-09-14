@@ -21,7 +21,7 @@ export default function SearchBar (): ReactElement {
       }}
       limit={10}
       placeholder='Localidad'
-      items={municipios.map((municipio) => ({ id: municipio.CODIGOINE, label: municipio.NOMBRE, value: municipio }))}
+      items={municipios.map((municipio) => ({ id: municipio.id, label: municipio.nombre, value: municipio }))}
       onClickItem={handleClickMunicipio}
     />
   )

@@ -11,7 +11,7 @@ export function useMunicipios (): HookModel {
   const { municipios } = useContext(MunicipiosContext)
 
   const findMunicipio = useCallback((id: string) => {
-    return municipios.find(municipios => municipios.CODIGOINE === id)
+    return municipios.find(municipios => municipios.id === id)
   }, [municipios]
   )
 

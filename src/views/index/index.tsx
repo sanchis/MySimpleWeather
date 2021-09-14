@@ -13,7 +13,7 @@ export default function Index (): ReactElement {
         <SearchBar />
         <div className={styles.containerMunicipios}>
           {municipiosGuardados.map(municipio =>
-            <Municipio municipio={municipio} key={municipio.CODIGOINE} />
+            <Municipio municipio={municipio} key={municipio.id} />
           )}
         </div>
       </div>

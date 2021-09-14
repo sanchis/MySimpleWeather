@@ -20,26 +20,20 @@ interface Breadcrumb {
   title: string
 }
 
-export interface MunicipiosEndpointResponse{
-  CODIGOINE: string
-  ID_REL: string
-  COD_GEO: string
-  CODPROV: string
-  NOMBRE_PROVINCIA: string
-  NOMBRE: string
-  POBLACION_MUNI: number
-  SUPERFICIE: number
-  PERIMETRO: number
-  CODIGOINE_CAPITAL: string
-  NOMBRE_CAPITAL: string
-  POBLACION_CAPITAL: string
-  HOJA_MTN25: string
-  LONGITUD_ETRS89_REGCAN95: number
-  LATITUD_ETRS89_REGCAN95: number
-  ORIGEN_COORD: string
-  ALTITUD: number
-  ORIGEN_ALTITUD: string
-  DISCREPANTE_INE: number
+export interface MunicipiosEndpointResponse {
+  latitud: string
+  id_old: string
+  url: string
+  latitud_dec: string
+  altitud: string
+  capital: string
+  num_hab: string
+  zona_comarcal: string
+  destacada: string
+  nombre: string
+  longitud_dec: string
+  id: string
+  longitud: string
 }
 
 interface Proximosdia {

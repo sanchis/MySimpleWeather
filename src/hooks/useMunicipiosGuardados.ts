@@ -12,7 +12,7 @@ export function useMunicipiosGuardados (): HookModel {
 
   const addNewMunicipio = useCallback((muni: MunicipiosEndpointResponse) => {
     guardarMunicipios((current) => {
-      if (!current.some(currentMuni => muni.CODIGOINE === currentMuni.CODIGOINE)) {
+      if (!current.some(currentMuni => muni.id === currentMuni.id)) {
         return [...current, muni]
       } else {
         return current
@@ -21,7 +21,7 @@ export function useMunicipiosGuardados (): HookModel {
   }, [municipiosGuardados])
 
   const deleteMunicipio = useCallback((muni: MunicipiosEndpointResponse) => {
-    guardarMunicipios((current) => current.filter(currentMuni => currentMuni.CODIGOINE !== muni.CODIGOINE))
+    guardarMunicipios((current) => current.filter(currentMuni => currentMuni.id !== muni.id))
   }, [municipiosGuardados])
 
   return {
