@@ -1,6 +1,6 @@
 import axios from 'axios'
-import { MunicipiosContextProvider } from 'context/municipios'
-import { MunicipiosGuardadosContextProvider } from 'context/municipiosGuardados'
+import { CitiesContextProvider } from 'context/cities'
+import { SavedCitiesContextProvider } from 'context/citiesSaved'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './styles/index.css'
@@ -14,11 +14,11 @@ axios.defaults.params = {
 ReactDOM.render(
   <React.StrictMode>
 
-    <MunicipiosContextProvider>
-      <MunicipiosGuardadosContextProvider>
+    <CitiesContextProvider>
+      <SavedCitiesContextProvider>
         <App />
-      </MunicipiosGuardadosContextProvider>
-    </MunicipiosContextProvider>
+      </SavedCitiesContextProvider>
+    </CitiesContextProvider>
   </React.StrictMode>,
   document.getElementById('root')
 )

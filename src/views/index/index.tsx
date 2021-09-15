@@ -2,18 +2,18 @@ import React, { ReactElement } from 'react'
 import video from 'assets/video.webm'
 import styles from './index.module.css'
 import SearchBar from 'components/searchBar'
-import { useMunicipiosGuardados } from 'hooks/useMunicipiosGuardados'
-import Municipio from 'components/municipio'
+import { useSavedCities } from 'hooks/useSavedCities'
+import City from 'components/city'
 
 export default function Index (): ReactElement {
-  const { municipiosGuardados } = useMunicipiosGuardados()
+  const { savedCities } = useSavedCities()
   return (
     <>
       <div className={styles.indexContainer}>
         <SearchBar />
-        <div className={styles.containerMunicipios}>
-          {municipiosGuardados.map(municipio =>
-            <Municipio municipio={municipio} key={municipio.id} />
+        <div className={styles.containerCities}>
+          {savedCities.map(cities =>
+            <City city={cities} key={cities.id} />
           )}
         </div>
       </div>

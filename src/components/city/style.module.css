@@ -1,4 +1,4 @@
-.municipio {
+.city {
     background-color: white;
     box-shadow: var(--b-shadow);
     margin: 10px;
@@ -7,7 +7,7 @@
     border-radius: var(--b-radius);
 }
 
-.municipioNombre {
+.cityNombre {
     text-align: center;
     width: 100%;
     display: block;
@@ -24,6 +24,6 @@ h1{
     margin: 0;
 }
 
-.municipioTemperatura {
+.cityTemperatura {
     text-align: center;
 }

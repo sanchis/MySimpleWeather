@@ -1,12 +1,12 @@
 import React, { ReactElement } from 'react'
-import { useTiempoMunicipio } from 'hooks/useTiempoMunicipios'
+import { useWeatherCity } from 'hooks/useWeatherCity'
 
 interface Props{
   id: string
 }
 
 export default function Detail (props: Props): ReactElement {
-  const { tiempo } = useTiempoMunicipio(props.id)
+  const { weather: tiempo } = useWeatherCity(props.id)
 
   return (
     <>

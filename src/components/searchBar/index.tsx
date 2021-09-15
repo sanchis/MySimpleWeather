@@ -1,16 +1,16 @@
 
 import Autocomplete, { AutocompleteItem } from 'components/ui/autocomplete'
-import { useMunicipios } from 'hooks/useMunicipios'
-import { useMunicipiosGuardados } from 'hooks/useMunicipiosGuardados'
+import { useCities } from 'hooks/useCities'
+import { useSavedCities } from 'hooks/useSavedCities'
 import React, { ReactElement } from 'react'
 import { useLocation } from 'wouter'
 
 export default function SearchBar (): ReactElement {
-  const { municipios } = useMunicipios()
+  const { cities } = useCities()
   const [, setLocation] = useLocation()
-  const { addNewMunicipio } = useMunicipiosGuardados()
+  const { addNewCity } = useSavedCities()
   const handleClickMunicipio = (item: AutocompleteItem): void => {
-    addNewMunicipio(item.value)
+    addNewCity(item.value)
     setLocation(`/t/${item.id}`)
   }
 
@@ -21,7 +21,7 @@ export default function SearchBar (): ReactElement {
       }}
       limit={10}
       placeholder='Localidad'
-      items={municipios.map((municipio) => ({ id: municipio.id, label: municipio.nombre, value: municipio }))}
+      items={cities.map((city) => ({ id: city.id, label: city.nombre, value: city }))}
       onClickItem={handleClickMunicipio}
     />
   )
