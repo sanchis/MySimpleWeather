@@ -20,5 +20,5 @@ ReactDOM.render(
       </SavedCitiesContextProvider>
     </CitiesContextProvider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.body
 )

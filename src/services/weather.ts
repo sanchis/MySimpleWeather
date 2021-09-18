@@ -169,7 +169,7 @@ export function getBackgroundImage (weather: WeatherFormated): string {
     return './src/assets/cover.jpg'
   }
 
-  return ''
+  return './src/assets/day-sunny.jpg'
 }
 
 function mapWeatherResponse (weather: Dia, name: string, date: Date): WeatherFormated {

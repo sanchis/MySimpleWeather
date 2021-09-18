@@ -19,24 +19,27 @@ export default function Main ({ loading, weather }: Props): ReactElement {
     .find(temp => temp.hour === date.getHours().toString())?.value.toFixed(0)
 
   return (
-    <main>
-      <div className={styles.weatherContent}>
-        <Loading show={loading}>
+    <>
+      {weather === undefined ? <p className={styles.noCitySelected}>Abre el menú y busca tu ciudad. </p> : null}
+      <main>
+        <div className={styles.weatherContent}>
+          <Loading show={loading || weather === undefined}>
 
-          <div><h1>{currentTempState}º</h1></div>
-          <div className={styles.cityInfo}>
-            <h2 className={styles.city}>{weather?.name}</h2>
-            <small className={styles.subTitle}>{format(date, 'HH:mm - eeee, d LLLL', {
-              locale: es
-            })}
-            </small>
-          </div>
-          <div className={styles.cityInfo}>
-            <img src={`./src/assets/weather-icons/${currentSkyState !== undefined ? currentSkyState?.toString() : ''}.svg`} />
-            {/* <small className={styles.subTitle}>Cloudy</small> */}
-          </div>
-        </Loading>
-      </div>
-    </main>
+            <div><h1>{currentTempState}º</h1></div>
+            <div className={styles.cityInfo}>
+              <h2 className={styles.city}>{weather?.name}</h2>
+              <small className={styles.subTitle}>{format(date, 'HH:mm - eeee, d LLLL', {
+                locale: es
+              })}
+              </small>
+            </div>
+            <div className={styles.cityInfo}>
+              <img src={`./src/assets/weather-icons/${currentSkyState !== undefined ? currentSkyState?.toString() : ''}.svg`} />
+              {/* <small className={styles.subTitle}>Cloudy</small> */}
+            </div>
+          </Loading>
+        </div>
+      </main>
+    </>
   )
 }
