@@ -40,8 +40,12 @@ export default function Autocomplete (props: Props): React.ReactElement<Props, a
 
   /** Debounce on search event */
   const debounceCallback = useCallback(
-    debounce((val: string) => setSearch(val), 500)
-    , [setSearch])
+    debounce((val: string) => setItems(() =>
+      props.items
+        .filter(item => item.label.toLocaleLowerCase().includes(val.toLocaleLowerCase()))
+        .slice(0, props.limit ?? 50)
+    ), 500)
+    , [setItems])
 
   /** Handle arrow donw and up */
   const handleKeyUpAndDown = (event: React.KeyboardEvent): void => {
@@ -64,12 +68,11 @@ export default function Autocomplete (props: Props): React.ReactElement<Props, a
   }
 
   /** Filter the elements on search */
-  useEffect(() =>
-    setItems(
-      props.items
-        .filter(item => item.label.toLocaleLowerCase().includes(search.toLocaleLowerCase()))
-        .slice(0, props.limit ?? 50)
-    )
+  useEffect(() => {
+    if (search.trim() !== '') {
+      debounceCallback(search)
+    }
+  }
   , [search])
 
   return (
@@ -77,8 +80,9 @@ export default function Autocomplete (props: Props): React.ReactElement<Props, a
       <div className={styles.autocompleteWrapper} ref={wrapperRef}>
         <Input
           {... props.input}
+          value={search}
           onFocus={() => setFocus(null)}
-          onChange={(event) => debounceCallback(event.target.value)}
+          onChange={(event) => setSearch(event.target.value)}
           onKeyDown={(event) => handleKeyUpAndDown(event)}
         />
         <ul className={styles.autoCompleteBox}>
@@ -89,6 +93,7 @@ export default function Autocomplete (props: Props): React.ReactElement<Props, a
                   ev.preventDefault()
                   props.onClickItem(item)
                   setItems([])
+                  setSearch('')
                 }}
                 onKeyDown={(event) =>
                   handleKeyUpAndDown(event)} ref={el => el !== null ? itemsRefs.current.push(el) : null}

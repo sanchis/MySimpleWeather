@@ -17,12 +17,6 @@ export default function Aside ({ onClickCity }: Props): ReactElement {
   const [visibleMenu, setVisibleMenu] = useState(false)
 
   useEffect(() => {
-    if (document.body.clientWidth < 720) {
-      setVisibleMenu(true)
-    }
-  }, [])
-
-  useEffect(() => {
     if (selectedCity === null && savedCities.length > 0) {
       hadleSelectCity(savedCities[0])
     }
