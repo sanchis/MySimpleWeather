@@ -34,7 +34,7 @@ export default function Main ({ loading, weather }: Props): ReactElement {
               </small>
             </div>
             <div className={styles.cityInfo}>
-              <img src={`./src/assets/weather-icons/${currentSkyState !== undefined ? currentSkyState?.toString() : ''}.svg`} />
+              <img src={`./weather-icons/${currentSkyState !== undefined ? currentSkyState?.toString() : ''}.svg`} />
               {/* <small className={styles.subTitle}>Cloudy</small> */}
             </div>
           </Loading>
