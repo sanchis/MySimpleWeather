@@ -4,7 +4,7 @@ import { useWeatherCity } from 'hooks/useWeatherCity'
 import Aside from 'components/aside'
 import Main from 'components/main'
 import { CityEndpointResponse } from 'services/weather.model'
-import { getBackgroundImage } from 'services/weather'
+import { getBackgroundImage } from 'services/weather.utils'
 
 export default function Index (): ReactElement {
   const [currentCitySelected, setCurretCitySelected] = useState<CityEndpointResponse| undefined>()
