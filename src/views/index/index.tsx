@@ -15,7 +15,7 @@ export default function Index (): ReactElement {
       <div
         className={styles.mainContainer}
         style={{
-          background: `url('${weather === undefined ? './src/assets/day-sunny.jpg' : getBackgroundImage(weather)}') no-repeat center center fixed`
+          background: `url('${weather === undefined ? './day-sunny.jpg' : getBackgroundImage(weather)}') no-repeat center center fixed`
         }}
       >
         <Aside onClickCity={(city) => setCurretCitySelected(city)} loading={loading} weather={weather} />

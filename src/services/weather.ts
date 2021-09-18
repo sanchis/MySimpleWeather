@@ -138,38 +138,38 @@ export function getBackgroundImage (weather: WeatherFormated): string {
   const isEvening = currentHour >= 18 && currentHour <= 22
   if (currentSkyState === undefined) {
     // Default image
-    return './src/assets/day-sunny.jpg'
+    return './day-sunny.jpg'
   }
 
   // is Rain
   if (currentSkyState !== undefined && rainIds.includes(currentSkyState)) {
-    return './src/assets/day-rain.png'
+    return './day-rain.png'
   } else if (currentSkyState !== undefined && electricalStormIds.includes(currentSkyState)) {
     // is electrical storm
-    return './src/assets/electrical-storm.jpg'
+    return './electrical-storm.jpg'
   } else if (currentSkyState !== undefined && snowIds.includes(currentSkyState)) {
     // is snow
-    return './src/assets/snow.jpg'
+    return './snow.jpg'
   } else if (currentSkyState !== undefined && cloudyIds.includes(currentSkyState)) {
     // is cloudy
     if (isMorning) {
-      return './src/assets/sunrise-cloudy.jpg'
+      return './sunrise-cloudy.jpg'
     } else if (isDay) {
-      return './src/assets/day-cloudy.jpg'
+      return './day-cloudy.jpg'
     } else {
-      return './src/assets/sunset-cloudy.jpg'
+      return './sunset-cloudy.jpg'
     }
   } else if (currentSkyState !== undefined && sunnyIds.includes(currentSkyState)) {
     // is sunny
-    return isMorning ? './src/assets/sunrise-sunny.jpg'
-      : isDay ? './src/assets/day-sunny.jpg'
-        : isEvening ? './src/assets/sunset-sunny.jpg' : './src/assets/night.jpg'
+    return isMorning ? './sunrise-sunny.jpg'
+      : isDay ? './day-sunny.jpg'
+        : isEvening ? './sunset-sunny.jpg' : './night.jpg'
   } else if (currentSkyState !== undefined && coverIds.includes(currentSkyState)) {
     // is full cover
-    return './src/assets/cover.jpg'
+    return './cover.jpg'
   }
 
-  return './src/assets/day-sunny.jpg'
+  return './day-sunny.jpg'
 }
 
 function mapWeatherResponse (weather: Dia, name: string, date: Date): WeatherFormated {
