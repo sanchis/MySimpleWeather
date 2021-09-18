@@ -2,6 +2,7 @@
 <p align="center">
 <img src="https://raw.githubusercontent.com/sanchis/MySimpleWeather/7967a4edfa1ea4487891c05928cb2ea4397b2e6a/public/weather-icons/12.svg" height="auto" center width="500px">
 </p>
+
 ## Como empezar.
 
 Primero, arranca el servidor de desarrollo:
