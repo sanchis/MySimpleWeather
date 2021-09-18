@@ -3,7 +3,7 @@
   "name": "mysimpleweather",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host 0.0.0.0",
     "build": "tsc && vite build",
     "serve": "vite preview",
     "prepare": "husky install",
@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "axios": "0.21.4",
+    "date-fns": "2.23.0",
     "just-debounce-it": "1.5.0",
     "localforage": "1.10.0",
     "react": "17.0.2",
