@@ -1,0 +1,65 @@
+.aside {
+    width: 20%;
+    backdrop-filter: blur(9px);
+    background-color: rgb(36 36 36 / 45%);
+    padding: 1.5em 1em 1em 1em;
+    color: #bcbcbc;
+    overflow-y: scroll;
+
+    position: fixed;
+    height: 100%;
+}
+
+.hamburguer {
+    fill: white;
+    padding: 10px;
+    position: absolute;
+    cursor: pointer;
+}
+
+.aside>div {
+    margin: 1em 0;
+}
+
+.aside>div.separator {
+    border-bottom: 1px solid grey;
+}
+
+.selectedCity {
+    color: white;
+}
+
+.aside>div.header {
+    margin: 2em 0;
+    color: white
+}
+
+.aside .close {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    width: 32px;
+    height: 32px;
+}
+
+.aside .close:hover {
+    opacity: 1;
+}
+
+.aside .close:before,
+.close:after {
+    position: absolute;
+    left: 15px;
+    content: ' ';
+    height: 33px;
+    width: 2px;
+    background-color: white;
+}
+
+.aside .close:before {
+    transform: rotate(45deg);
+}
+
+.aside .close:after {
+    transform: rotate(-45deg);
+}

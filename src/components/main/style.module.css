@@ -1,0 +1,53 @@
+main {
+    width: 100%;
+    display: flex;
+    align-items: end;
+    padding-bottom: 2em;
+    justify-content: center;
+
+    font-size: 5vw;
+    text-shadow: 0 0 5px #797979;
+    height: 100%;
+}
+
+@media (min-width: 600px) {
+    main{
+        font-size: 3vw;
+    }
+  }
+
+.weatherContent {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.weatherContent small{
+    font-size: 0.4em;
+}
+
+.weatherContent>div.cityInfo {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.weatherContent>div.cityInfo>.city {
+    max-width: 9em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.weatherContent>div.cityInfo>img {
+    height: auto;
+    width: 3em;
+}
+
+.weatherContent>div.cityInfo>.subTitle {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}

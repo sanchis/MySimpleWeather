@@ -15,6 +15,32 @@ export interface CityEndpointResponse {
   longitud: string
 }
 
+export interface WeatherFormated{
+  name: string
+  date: Date
+  probPrecipitaciones: HourValue[]
+  estadoCielo: SkyState[]
+  temperatura: HourValue[]
+  temperaturaMinMax: MinMaxValue
+  humedad: HourValue[]
+  humedadMinMax: MinMaxValue
+
+}
+
+interface SkyState extends HourValue{
+  descripcion?: string
+}
+
+export interface HourValue {
+  hour: String
+  value: number
+}
+
+interface MinMaxValue {
+  min: Number
+  max: Number
+}
+
 export interface AemetCommonResponse{
   descripcion: string
   estado: number
@@ -36,7 +62,7 @@ interface Prediccion {
   dia: Dia[]
 }
 
-interface Dia {
+export interface Dia {
   probPrecipitacion: ProbPrecipitacion[]
   cotaNieveProv: CotaNieveProv[]
   estadoCielo: EstadoCielo[]
@@ -49,13 +75,13 @@ interface Dia {
   fecha: string
 }
 
-interface Temperatura {
+export interface Temperatura {
   maxima: number
   minima: number
   dato: Dato[]
 }
 
-interface Dato {
+export interface Dato {
   value: number
   hora: number
 }
@@ -66,9 +92,9 @@ interface Viento {
   periodo?: string
 }
 
-interface EstadoCielo {
+export interface EstadoCielo {
   value: string
-  periodo?: string
+  periodo: string
   descripcion: string
 }
 
@@ -77,9 +103,14 @@ interface CotaNieveProv {
   periodo?: string
 }
 
-interface ProbPrecipitacion {
+export interface ProbPrecipitacion {
   value: number
-  periodo?: string
+  periodo: string
+}
+
+export interface PeriodoItem{
+  value: any
+  periodo: string
 }
 
 interface Origen {

@@ -1,29 +1,26 @@
 import { useEffect, useState } from 'react'
 import { getWeatherCity } from 'services/weather'
-import { Weather } from 'services/weather.model'
-import { useCities } from './useCities'
+import { WeatherFormated } from 'services/weather.model'
 
 interface HookModel{
-  weather: Weather | undefined
+  weather: WeatherFormated | undefined
   loading: boolean
 }
 
-export function useWeatherCity (id: string): HookModel {
-  const { cities: municipios, findCity: findMunicipio } = useCities()
+export function useWeatherCity (id?: string): HookModel {
   const [loading, setLoading] = useState<boolean>(false)
-  const [weather, setWeather] = useState<Weather>()
+  const [weather, setWeather] = useState<WeatherFormated>()
 
   useEffect(() => {
-    const currentWeather = findMunicipio(id)
-    if (currentWeather === undefined) {
+    if (id === null || id === undefined) {
       return
     }
 
     setLoading(true)
-    getWeatherCity(currentWeather.id_old)
+    getWeatherCity(id)
       .then(data => setWeather(data))
       .finally(() => setLoading(false))
-  }, [id, municipios])
+  }, [id])
 
   return {
     weather,
