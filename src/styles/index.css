@@ -15,7 +15,7 @@ body {
   color: var(--font-color);
   height: 100%;
 }
-html{
+html,#root{
   height: 100%;
 }
 

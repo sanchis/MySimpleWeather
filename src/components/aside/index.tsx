@@ -14,11 +14,10 @@ interface Props{
 export default function Aside ({ onClickCity }: Props): ReactElement {
   const { savedCities } = useSavedCities()
   const [selectedCity, setSelectedCity] = useState<CityEndpointResponse|null>(null)
-  const ref = useRef<HTMLElement | null>(null)
   const [visibleMenu, setVisibleMenu] = useState(false)
 
   useEffect(() => {
-    if ((ref.current?.parentElement?.clientWidth ?? 0) < 720) {
+    if (document.body.clientWidth < 720) {
       setVisibleMenu(true)
     }
   }, [])
@@ -39,7 +38,7 @@ export default function Aside ({ onClickCity }: Props): ReactElement {
       <svg
         onClick={() => setVisibleMenu(true)}
         viewBox='0 0 100 80' width='80' className={styles.hamburguer} height='60' style={{
-          display: !visibleMenu
+          display: visibleMenu
             ? 'none' : 'initial'
         }}
       >
@@ -47,7 +46,7 @@ export default function Aside ({ onClickCity }: Props): ReactElement {
         <rect y='30' width='150' height='20' />
         <rect y='60' width='150' height='20' />
       </svg>
-      <aside className={styles.aside} ref={ref} hidden={visibleMenu}>
+      <aside className={styles.aside} hidden={!visibleMenu}>
         <a
           className={styles.close} onClick={(e) => {
             e.preventDefault()
