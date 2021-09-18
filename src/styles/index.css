@@ -15,8 +15,12 @@ body {
   color: var(--font-color);
   height: 100%;
 }
-html,#root{
+
+html,
+#root {
   height: 100%;
+  scrollbar-color: white transparent;
+  scrollbar-width: 6px;
 }
 
 *,
@@ -46,6 +50,7 @@ html,#root{
 ::-webkit-scrollbar-track-piece {
   background-color: transparent;
 }
+
 
 h1,
 h2,

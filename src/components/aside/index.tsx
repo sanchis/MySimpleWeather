@@ -1,7 +1,7 @@
 
 import SearchBar from 'components/searchBar'
 import { useSavedCities } from 'hooks/useSavedCities'
-import React, { ReactElement, useEffect, useRef, useState } from 'react'
+import React, { ReactElement, useEffect, useState } from 'react'
 import { CityEndpointResponse, WeatherFormated } from 'services/weather.model'
 import styles from './style.module.css'
 
