@@ -1,5 +1,5 @@
 
-import Autocomplete, { AutocompleteItem } from 'components/ui/autocomplete'
+import Autocomplete, { AutocompleteItem } from 'components/autocomplete'
 import { useCities } from 'hooks/useCities'
 import { useSavedCities } from 'hooks/useSavedCities'
 import React, { ReactElement } from 'react'

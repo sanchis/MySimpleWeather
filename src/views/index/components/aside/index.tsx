@@ -1,5 +1,5 @@
 
-import SearchBar from 'components/searchBar'
+import SearchBar from 'views/index/components/searchBar'
 import { useSavedCities } from 'hooks/useSavedCities'
 import React, { ReactElement, useEffect, useState } from 'react'
 import { CityEndpointResponse, WeatherFormated } from 'services/weather.model'
