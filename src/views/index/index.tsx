@@ -6,16 +6,18 @@ import Main from 'components/main'
 import { CityEndpointResponse } from 'services/weather.model'
 import { getBackgroundImage } from 'services/weather.utils'
 
-export default function Index (): ReactElement {
-  const [currentCitySelected, setCurretCitySelected] = useState<CityEndpointResponse| undefined>()
-  const { loading, weather } = useWeatherCity(currentCitySelected?.id)
+export default function IndexView ({ loading, weather, setCurretCitySelected }: any): ReactElement {
+  // const [currentCitySelected, setCurretCitySelected] = useState<CityEndpointResponse| undefined>()
+  // const { loading, weather } = useWeatherCity(currentCitySelected?.id)
 
   return (
     <>
       <div
         className={styles.mainContainer}
         style={{
-          background: `url('${weather === undefined ? './day-sunny.jpg' : getBackgroundImage(weather)}') no-repeat center center fixed`
+          background:
+          `url('${weather === undefined ? './day-sunny.jpg'
+          : getBackgroundImage(weather)}') no-repeat center center fixed`
         }}
       >
         <Aside onClickCity={(city) => setCurretCitySelected(city)} loading={loading} weather={weather} />
