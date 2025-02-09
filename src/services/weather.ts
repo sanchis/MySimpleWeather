@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { isToday } from 'date-fns'
-import { AemetCommonResponse, CityEndpointResponse, Weather, WeatherFormated } from './weather.model'
+import { AemetCommonResponse, CityEndpointResponse, Weather, WeatherFormated, RootCityResponse } from './weather.model'
 import { mapWeatherResponse } from './weather.utils'
 
 /**
@@ -10,7 +10,10 @@ import { mapWeatherResponse } from './weather.utils'
  * @return {*}  {Promise<CityEndpointResponse[]>}
  */
 export async function getCities (): Promise<CityEndpointResponse[]> {
-  return await axios.get<CityEndpointResponse[]>('maestro/municipios')
+  const response = await axios.get<RootCityResponse>('maestro/municipios')
+    .then(response => response.data)
+
+  return await axios.get<CityEndpointResponse[]>(response.datos)
     .then(response => response.data)
 }
 

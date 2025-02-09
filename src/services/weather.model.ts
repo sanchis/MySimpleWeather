@@ -1,3 +1,9 @@
+export interface RootCityResponse {
+  descripcion: string
+  estado: number
+  datos: string
+  metadatos: string
+}
 
 export interface CityEndpointResponse {
   latitud: string
